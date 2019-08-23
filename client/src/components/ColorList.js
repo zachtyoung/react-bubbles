@@ -24,11 +24,9 @@ const ColorList = ({ colors, updateColors }) => {
     // where is is saved right now?
     axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
     .then(res => {
-   
-    let newColor = colors.map(el => {
+    updateColors(colors.map(el => {
       return el.id === colorToEdit ? colorToEdit : el
-    });
-    updateColors(newColor)
+    }));
     })
     window.location.reload();
   };
